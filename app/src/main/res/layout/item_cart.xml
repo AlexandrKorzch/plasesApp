@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.cart.adapter.CartItemViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_carts_item_card_height"
+        android:background="@color/colorWhite"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/fragment_carts_item_image_width"
+            android:layout_height="@dimen/size_0"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            bind:loadImageNoGone="@{viewModel.item.image}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!--TODO change category-->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/BlackVerySmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="3"
+            tools:text="Салат"
+            android:text="@{viewModel.item.name}"
+            app:layout_constraintEnd_toStartOf="@+id/amountLinearLayout"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- TODO remove hard text -->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/categoryTextView"
+            style="@style/GraySmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@{viewModel.item.category.toString()}"
+            app:layout_constraintEnd_toStartOf="@+id/amountLinearLayout"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+        <!--android:text="Салаты"-->
+        <!-- TODO remove hard text -->
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/priceTextView"
+            style="@style/BlackVerySmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="2"
+            bind:totalGoodsPrice="@{viewModel.goods}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"/>
+
+        <LinearLayout
+            android:id="@+id/amountLinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_16"
+            android:background="@drawable/background_items_amount"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.decItemAmount()}"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_8"
+                android:paddingStart="@dimen/size_8"
+                android:paddingTop="@dimen/size_8"
+                android:text="@string/dialog_fragment_menu_item_minus"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingEnd="@dimen/size_16"
+                android:paddingStart="@dimen/size_16"
+                android:text="@{viewModel.stringItemAmount()}"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.incItemAmount()}"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_8"
+                android:paddingStart="@dimen/size_8"
+                android:paddingTop="@dimen/size_8"
+                android:text="@string/dialog_fragment_menu_item_plus"/>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

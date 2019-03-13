@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.menuitem.MenuItemViewModel" />
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/addToCartFrameLayout"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- TODO change icon (remove standard) -->
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/closeImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_8"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.onCloseClick()}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_cross" />
+
+                <!-- TODO remove hard text -->
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/titleTextView"
+                    style="@style/BlackBoldText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_8"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:text="@{viewModel.productObs.get().title}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/closeImageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- TODO change height (maybe set 200dp) -->
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/dialog_fragment_menu_item_image_view_size"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:adjustViewBounds="true"
+                    android:cropToPadding="true"
+                    android:scaleType="centerCrop"
+                    tools:src="@drawable/test"
+                    bind:loadImageNoGone="@{viewModel.productObs.get().image}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+                <!-- TODO remove hard text -->
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/descriptionTextView"
+                    style="@style/BlackSmallText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_16"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="3"
+                    android:text="@{viewModel.productObs.get().description}"
+                    tools:text="Повседневная практика показывает, что сложившаяся структура организации требуют определения."
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                <!-- TODO remove hard text -->
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/aboutTextView"
+                    style="@style/NavigationDrawerGraySmallText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_16"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:ellipsize="end"
+                    android:gravity="center_horizontal"
+                    android:maxLines="3"
+                    android:text="@{viewModel.productObs.get().composition}"
+                    tools:text="Разнообразный и богатый опыт новая модель организационной деятельности влечет за собой процесс внедрения."
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/descriptionTextView" />
+
+                <TextView
+                    android:id="@+id/sizeLabelTextView"
+                    style="@style/NavigationDrawerGrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_24"
+                    android:drawableEnd="@drawable/ic_arrow_rolled_question_mini"
+                    android:drawablePadding="@dimen/size_4"
+                    android:text="@string/dialog_fragment_menu_item_size"
+                    app:layout_constraintEnd_toStartOf="@+id/divider1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+
+                <!-- TODO remove hard text -->
+                <TextView
+                    android:id="@+id/sizeTextView"
+                    style="@style/BlackBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="300 г"
+                    android:text="@{viewModel.productObs.get().weight +' '+viewModel.productObs.get().dimension}"
+                    app:layout_constraintEnd_toStartOf="@+id/divider1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sizeLabelTextView" />
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="@dimen/fragment_place_divider_thickness"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_marginTop="@dimen/size_24"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+
+                <TextView
+                    android:id="@+id/priceLabelTextView"
+                    style="@style/NavigationDrawerGrayText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_24"
+                    android:text="@string/dialog_fragment_menu_item_price"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/divider1"
+                    app:layout_constraintTop_toBottomOf="@+id/aboutTextView" />
+
+                <!-- TODO remove hard text -->
+                <TextView
+                    android:id="@+id/priceTextView"
+                    style="@style/GreenBigBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    tools:text="300 ₸"
+                    android:text='@{viewModel.fullPrice+" ₸"}'
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/divider1"
+                    app:layout_constraintTop_toBottomOf="@+id/priceLabelTextView" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/fragment_place_divider_thickness"
+                    android:layout_marginTop="@dimen/size_24"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/amountTextView"
+                    style="@style/BlackSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_16"
+                    android:text='@{viewModel.itemAmount+""}'
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/minusTextView"
+                    style="@style/BlackSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.changeAmount(false)}"
+                    android:text="@string/dialog_fragment_menu_item_minus"
+                    app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/amountTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/amountTextView" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/plusTextView"
+                    style="@style/BlackSmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/_12sdp"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.changeAmount(true)}"
+                    android:text="@string/dialog_fragment_menu_item_plus"
+                    app:layout_constraintBottom_toBottomOf="@+id/amountTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/amountTextView"
+                    app:layout_constraintTop_toTopOf="@+id/amountTextView" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_32sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/plusTextView" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+
+        <FrameLayout
+            android:id="@+id/addToCartFrameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            android:background="@color/colorGreen"
+            android:foreground="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.onAddToCart()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nestedScrollView">
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/GreenButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="@dimen/size_8"
+                android:drawableStart="@drawable/ic_cart_white"
+                android:gravity="center_vertical"
+                android:text="@string/dialog_fragment_menu_item_add_to_cart" />
+
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

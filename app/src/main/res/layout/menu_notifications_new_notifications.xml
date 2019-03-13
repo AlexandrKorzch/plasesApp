@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/toolbar_menu_badge_container_size"
+    android:layout_height="@dimen/toolbar_menu_badge_container_size">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="@dimen/toolbar_menu_badge_icon_container_size"
+        android:layout_height="@dimen/toolbar_menu_badge_icon_container_size"
+        android:layout_gravity="center"
+        android:background="?attr/selectableItemBackground">
+
+        <!-- TODO remove text -->
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/newNotificationsTextView"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:background="@drawable/background_menu_places_badge_red"
+            android:gravity="center"
+            android:minHeight="@dimen/toolbar_menu_badge_min_size"
+            android:minWidth="@dimen/toolbar_menu_badge_min_size"
+            android:padding="@dimen/size_2"
+            android:text="2"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/notifications_menu_icon_text_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</FrameLayout>

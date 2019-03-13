@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.menu.MenuViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/tabContainerConstraintLayout"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_16"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/mainDishesTextView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_8"
+                android:layout_marginStart="@dimen/size_16"
+                bind:pressed="@{viewModel.firstButtonPressed}"
+                bind:prod_category="@{viewModel.firstCategory}"
+                android:gravity="center_horizontal"
+                android:onClick="@{() -> viewModel.onFirstBtClick()}"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_4"
+                android:paddingStart="@dimen/size_4"
+                android:paddingTop="@dimen/size_8"
+                app:layout_constraintEnd_toStartOf="@+id/dessertTextView"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dessertTextView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_8"
+                android:layout_marginStart="@dimen/size_8"
+                bind:pressed="@{viewModel.secondButtonPressed}"
+                bind:prod_category="@{viewModel.secondCategory}"
+                android:gravity="center_horizontal"
+                android:onClick="@{() -> viewModel.onSecondBtClick()}"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_4"
+                android:paddingStart="@dimen/size_4"
+                android:paddingTop="@dimen/size_8"
+                app:layout_constraintEnd_toStartOf="@+id/beveragesTextView"
+                app:layout_constraintStart_toEndOf="@+id/mainDishesTextView"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/beveragesTextView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_8"
+                bind:pressed="@{viewModel.thirdButtonPressed}"
+                bind:prod_category="@{viewModel.thirdCategory}"
+                android:gravity="center_horizontal"
+                android:onClick="@{() -> viewModel.onThirdBtClick()}"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_4"
+                android:paddingStart="@dimen/size_4"
+                android:paddingTop="@dimen/size_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/dessertTextView"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/size_0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            bind:items="@{viewModel.items}"
+            app:layout_constraintTop_toBottomOf="@+id/tabContainerConstraintLayout"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

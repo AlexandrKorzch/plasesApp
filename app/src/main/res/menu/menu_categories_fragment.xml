@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/cartItem"
+        android:title="@string/menu_places_fragment_cart"
+        app:actionLayout="@layout/menu_cart_layout"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/bookingItem"
+        android:title="@string/menu_places_fragment_booking"
+        app:actionLayout="@layout/menu_booking_layout"
+        android:visible="false"
+        app:showAsAction="always"/>
+
+</menu>

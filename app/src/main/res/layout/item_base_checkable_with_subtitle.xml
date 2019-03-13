@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.common.adapters.CheckableItemWithSubtitleViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.checkItem()}">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/BlackSmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.item().title}"
+            app:layout_constraintEnd_toStartOf="@+id/checkableImageView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/subtitleTextView"
+            style="@style/BlackVerySmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{viewModel.subItem()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/titleTextView"
+            app:layout_constraintStart_toStartOf="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/checkableImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:visibility="@{viewModel.isChecked() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="@+id/subtitleTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/titleTextView"
+            app:srcCompat="@drawable/ic_check_for_filter"/>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_reservation_divider_thickness"
+            android:layout_marginStart="@dimen/size_16"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

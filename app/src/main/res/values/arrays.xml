@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="complaintCategory">
+        <item>@string/fragment_complaints_item_delivery</item>
+        <item>@string/fragment_complaints_item_kitchen</item>
+        <item>@string/fragment_complaints_item_app</item>
+        <item>@string/fragment_complaints_item_fraud</item>
+        <item>@string/fragment_complaints_item_low_quality_services</item>
+        <item>@string/fragment_complaints_item_incorrect_behavior</item>
+        <item>@string/fragment_complaints_item_cheating</item>
+        <item>@string/fragment_complaints_item_payment_terminals</item>
+        <item>@string/fragment_complaints_item_other</item>
+    </string-array>
+
+    <string-array name="cities">
+        <item>  Алма-Ата   </item>
+        <item>  Астана   </item>
+        <item>  Шымкент    </item>
+        <item>  Караганда   </item>
+        <item>  Актобе   </item>
+        <item>  Тараз   </item>
+        <item>  Павлодар   </item>
+        <item>  Усть-Каменогорск    </item>
+        <item>  Семей   </item>
+        <item>  Кызылорда    </item>
+        <item>  Костанай    </item>
+        <item>  Уральск    </item>
+        <item>  Атырау    </item>
+        <item>  Петропавловск    </item>
+        <item>  Темиртау   </item>
+        <item>  Актау    </item>
+        <item>  Туркестан   </item>
+        <item>  Кокшетау   </item>
+        <item>  Талдыкорган   </item>
+        <item>  Экибастуз   </item>
+        <item>  Рудный    </item>
+        <item>  Жезказган    </item>
+        <item>  Жанаозен    </item>
+        <item>  Балхаш    </item>
+        <item>  Сатпаев    </item>
+        <item>  Кентау    </item>
+        <item>  Степногорск    </item>
+        <item>  Шахтинск    </item>
+        <item>  Риддер    </item>
+        <item>  Сарань    </item>
+    </string-array>
+
+    <string-array name="streets">
+        <item>  Асылбекова</item>
+        <item>  Атамура</item>
+        <item>  Атбасарская</item>
+        <item> Аубакирова</item>
+        <item> Ауэзова</item>
+        <item> Аханова Жакана</item>
+        <item> Аханова</item>
+        <item> Ахмедиярова</item>
+        <item> Ахмедсафина</item>
+        <item> Ахметова</item>
+        <item> Ахременко 2-я</item>
+        <item> Ахременко</item>
+        <item> Ахтанова</item>
+        <item> Ахундова</item>
+        <item> Ачинская</item>
+        <item>  Ашекеева</item>
+        <item>  Ашекеева</item>
+        <item> Ашимбаева</item>
+        <item> Ашимбаева</item>
+        <item> Ашхабадская</item>
+        <item>  Аэродромная</item>
+        <item>  Аяз би</item>
+        <item>  Бабаева</item>
+        <item> Бабыра</item>
+        <item> Багаева</item>
+    </string-array>
+
+    <string-array name="languages">
+        <item> Русский</item>
+        <item> Казахстанский</item>
+        <item> English</item>
+    </string-array>
+
+    <string-array name="restaurants">
+        <item>Ресторан</item>
+        <item>Кафе</item>
+        <item>Паб/Бар</item>
+        <item>Кофейня</item>
+        <item>Суши бар</item>
+        <item>Стейк хауз</item>
+        <item>Лайндж бар</item>
+        <item>Караоке</item>
+    </string-array>
+
+    <string-array name="kitchens">
+        <item> Русская</item>
+        <item> Казахская</item>
+        <item> Итальянская</item>
+        <item> Французская</item>
+        <item> Мексиканская</item>
+        <item> Кавказская</item>
+    </string-array>
+
+    <string-array name="sort_style">
+        <item> Рейтингу</item>
+        <item> Ценам</item>
+        <item> Расстоянию</item>
+        <item> Названию</item>
+    </string-array>
+
+    <string-array name="halls">
+        <item> Зал 1</item>
+        <item> Зал 2</item>
+        <item> Зал 3</item>
+        <item> Зал 4</item>
+        <item> Зал 5</item>
+        <item> Зал 6</item>
+        <item> Зал 7</item>
+    </string-array>
+
+</resources>

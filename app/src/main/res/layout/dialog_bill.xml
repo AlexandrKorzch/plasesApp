@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.invoice.bill.BillViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDarkTransparent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_56sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_56sdp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_picture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                android:paddingTop="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/im_radish_with_cheese" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                style="@style/BlackSmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/_8sdp"
+                android:text="Ваш счет в Sky Bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_picture" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_price_label9"
+                style="@style/GraySmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="234 565"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_price_label"
+                style="@style/InvoiceLabelText"
+                android:layout_marginTop="@dimen/_14sdp"
+                android:text="@string/invoice_price_of_order"
+                app:layout_constraintBottom_toTopOf="@+id/tv_price_label2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price_label9" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_price_label2"
+                style="@style/InvoiceLabelText"
+                android:text="@string/invoice_price_of_delivery"
+                app:layout_constraintBottom_toTopOf="@+id/tv_price_label3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price_label" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_price_label3"
+                style="@style/InvoiceLabelText"
+                android:text="@string/invoice_sum"
+                app:layout_constraintBottom_toTopOf="@+id/divider2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_price_label2" />
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/InvoiceValue"
+                android:text="500 ₸"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_price_label"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/InvoiceValue"
+                android:text="50 ₸"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_price_label2"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:text="450 ₸"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_15sdp"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/tv_price_label3"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_decline_booking"
+                style="@style/InvoiceBookingButton"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:background="@color/colorGrayLight"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Отменить бронь"
+                android:textColor="@color/colorDarkGray"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/tv_pay"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_pay"
+                style="@style/InvoiceBookingButton"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:background="@color/colorGreen"
+                android:foreground="?attr/selectableItemBackground"
+                android:text="Оплатить"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_decline_booking"/>
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

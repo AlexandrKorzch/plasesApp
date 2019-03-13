@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.support.SupportViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/listBackground"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:cropToPadding="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/image_support"/>
+
+            <!-- TODO remove text -->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/phoneTextView"
+                style="@style/WhiteText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:text="+38 063 123 4567"
+                app:layout_constraintBottom_toTopOf="@+id/messageTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+            <!-- TODO remove text -->
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/messageTextView"
+                style="@style/WhiteText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:text="myplace_user@gmail.com"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/userFirstNameContainer"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/userFirstNameLabelTextView"
+                        style="@style/ReservationLabelText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_support_user_first_name"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/userFirstNameEditText"
+                        style="@style/ReservationText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="@dimen/size_0"
+                        android:background="@color/colorTransparent"
+                        android:gravity="end"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:padding="@dimen/size_16"
+                        android:text="@={viewModel.userFirstName()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/fragment_reservation_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userFirstNameContainer"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/userLastNameContainer"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider1">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/userLastNameLabelTextView"
+                        style="@style/ReservationLabelText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_support_user_last_name"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/userLastNameEditText"
+                        style="@style/ReservationText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="@dimen/size_0"
+                        android:background="@color/colorTransparent"
+                        android:gravity="end"
+                        android:inputType="textCapWords"
+                        android:maxLength="25"
+                        android:padding="@dimen/size_16"
+                        android:text="@={viewModel.userLastName()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/fragment_reservation_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userLastNameContainer"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/userEmailContainer"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/userEmailLabelTextView"
+                        style="@style/ReservationLabelText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_support_user_email"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/userEmailEditText"
+                        style="@style/ReservationText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="@dimen/size_0"
+                        android:background="@color/colorTransparent"
+                        android:gravity="end"
+                        android:layout_marginStart="@dimen/_80sdp"
+                        android:inputType="textEmailAddress"
+                        android:maxLength="35"
+                        android:padding="@dimen/size_16"
+                        android:text="@={viewModel.userEmail()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/fragment_reservation_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userEmailContainer"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/categoryConstraintLayout"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.onOpenCategories()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/categoryLabelTextView"
+                        style="@style/BlackText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_complaints_category"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/categoryTextView"
+                        style="@style/GrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginEnd="@dimen/size_8"
+                        android:layout_marginStart="@dimen/size_8"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="@={viewModel.category()}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/appCompatImageView"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/categoryLabelTextView"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/appCompatImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_8"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_8"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/fragment_reservation_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/categoryConstraintLayout"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/questionConstraintLayout"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.setQuestionVisible()}"
+                    android:padding="@dimen/size_16"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/questionLabelTextView"
+                        style="@style/BlackText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="wrap_content"
+                        android:text="@string/fragment_complaints_description"
+                        app:layout_constraintEnd_toEndOf="@+id/questionEditText"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatEditText
+                        android:id="@+id/questionEditText"
+                        style="@style/GrayText"
+                        android:layout_width="@dimen/size_0"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorTransparent"
+                        android:hint="@string/fragment_complaints_description_hint"
+                        android:inputType="textMultiLine"
+                        android:maxLength="500"
+                        android:paddingTop="@dimen/size_8"
+                        android:text="@={viewModel.question()}"
+                        android:visibility="@{viewModel.isQuestionVisible() ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/questionLabelTextView"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/sendLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            android:layout_margin="@dimen/size_16"
+            android:background="@drawable/background_button_send_query"
+            android:enabled="@{viewModel.isSendEnabled()}"
+            android:gravity="center"
+            android:onClick="@{() -> viewModel.sendMessageClick()}"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/sendImageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_8"
+                android:visibility="@{viewModel.isSendEnabled() ? View.VISIBLE : View.GONE}"
+                app:srcCompat="@drawable/ic_send"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sendTextView"
+                style="@style/GreenButtonText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{viewModel.isSendEnabled() ? @string/fragment_support_send : @string/fragment_support_send_message}"
+                android:textColor="@{viewModel.isSendEnabled() ? @color/colorWhite : @color/colorBlack}"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

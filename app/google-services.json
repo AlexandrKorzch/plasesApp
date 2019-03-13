@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "577580523399",
+    "firebase_url": "https://myplaceandroid.firebaseio.com",
+    "project_id": "myplaceandroid",
+    "storage_bucket": "myplaceandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577580523399:android:f1ada077f56ca327",
+        "android_client_info": {
+          "package_name": "net.vjet.myplace"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577580523399-59bv18oqf5gvqfb42lmhl4138mj7a49q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "net.vjet.myplace",
+            "certificate_hash": "846127bef691519ab5161d54667f76e50265797d"
+          }
+        },
+        {
+          "client_id": "577580523399-bbg3vimem5or4nah5mvqaciihkg9kna3.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "577580523399-bbg3vimem5or4nah5mvqaciihkg9kna3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "removed"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577580523399-bbg3vimem5or4nah5mvqaciihkg9kna3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

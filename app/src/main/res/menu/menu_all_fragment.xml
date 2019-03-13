@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/modeItem"
+        android:icon="@drawable/ic_card_view"
+        android:title="@string/menu_places_fragment_map"
+        app:showAsAction="always"/>
+    <!-- TODO change icon and title -->
+    <item
+        android:id="@+id/filterItem"
+        android:icon="@drawable/ic_filter_for_screen_all"
+        android:title="@string/menu_places_fragment_filter"
+        app:showAsAction="always"/>
+</menu>

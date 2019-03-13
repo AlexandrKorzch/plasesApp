@@ -1,0 +1,529 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.place.fragment.PlaceFragmentViewModel" />
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/scroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v4.view.ViewPager
+                android:id="@+id/vp_gallery"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/fragment_place_image_view_height"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                bind:gallery="@{viewModel.gallery}" />
+
+            <com.rd.PageIndicatorView
+                android:id="@+id/pageIndicatorView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/vp_gallery"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:piv_animationType="scale"
+                app:piv_dynamicCount="true"
+                app:piv_interactiveAnimation="true"
+                app:piv_selectedColor="@color/colorGrayL"
+                app:piv_unselectedColor="@color/colorGrayL"
+                app:piv_viewPager="@id/viewPager" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/bt_favorite"
+                android:layout_width="@dimen/item_places_circle_button_size"
+                android:layout_height="@dimen/item_places_circle_button_size"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/background_button_circle_white"
+                android:onClick="@{() -> viewModel.favoriteClick()}"
+                android:padding="@dimen/item_places_circle_button_icon_padding"
+                app:layout_constraintBottom_toTopOf="@+id/bt_booking_"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                bind:favoriteImage="@{viewModel.favoriteState}" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/bt_booking_"
+                android:layout_width="@dimen/item_places_circle_button_size"
+                android:layout_height="@dimen/item_places_circle_button_size"
+                android:background="@drawable/background_button_circle_white"
+                android:onClick="@{() -> viewModel.openBooking()}"
+                android:padding="@dimen/item_places_circle_button_icon_padding"
+                app:layout_constraintBottom_toTopOf="@+id/bt_delivery"
+                app:layout_constraintStart_toStartOf="@+id/bt_favorite"
+                app:layout_constraintTop_toBottomOf="@+id/bt_favorite"
+                bind:hasBooking="@{viewModel.placeObs.get().hasBooking}"
+                bind:isBooking="@{viewModel.placeObs.get().isBooking}" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/bt_delivery"
+                android:layout_width="@dimen/item_places_circle_button_size"
+                android:layout_height="@dimen/item_places_circle_button_size"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:background="@drawable/background_button_circle_white"
+                android:onClick="@{() -> viewModel.openDelivery()}"
+                android:padding="@dimen/item_places_circle_button_icon_padding"
+                app:layout_constraintBottom_toBottomOf="@+id/vp_gallery"
+                app:layout_constraintStart_toStartOf="@+id/bt_booking_"
+                app:layout_constraintTop_toBottomOf="@+id/bt_booking_"
+                bind:hasDelivery="@{viewModel.placeObs.get().hasDelivery}"
+                bind:isDelivery="@{viewModel.placeObs.get().isDelivery}" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/aboutPlaceTitleTextView"
+                style="@style/PlaceBoldText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@{viewModel.placeObs.get().title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/vp_gallery"
+                tools:text="@string/fragment_place_about_place" />
+
+            <LinearLayout
+                android:id="@+id/aboutPlaceConstraintLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_8"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutPlaceTitleTextView">
+
+                <LinearLayout
+                    android:id="@+id/starLinearLayout"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="match_parent"
+                    android:layout_weight="@dimen/fragment_place_left_weight"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/starTextView"
+                        style="@style/PlaceBoldText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_4"
+                        android:text='@{((int)viewModel.placeObs.get().rating)+""}'
+                        tools:text="6" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/starFrameLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_24"
+                        app:srcCompat="@drawable/ic_star" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/starsTextView"
+                        style="@style/PlaceBoldText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{""+viewModel.placeObs.get().mpRating}'
+                        tools:text="6" />
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/starsImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/size_4"
+                        app:srcCompat="@drawable/ic_stars" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/aboutPlaceTextTextView"
+                    style="@style/PlaceText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:layout_weight="@dimen/fragment_place_right_weight"
+                    android:text='@{""+viewModel.placeObs.get().description}'
+                    tools:text="Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э. Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так. Его корни уходят в один фрагмент классической латыни 45 года н.э." />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/discountTitleTextView"
+                style="@style/PlaceBoldText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:text="@string/fragment_place_discount"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/aboutPlaceConstraintLayout" />
+
+            <LinearLayout
+                android:id="@+id/discountConstraintLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_8"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/discountTitleTextView">
+
+                <LinearLayout
+                    android:id="@+id/discountLinearLayout"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="@dimen/fragment_place_left_weight"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/discountImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_6"
+                        app:srcCompat="@drawable/ic_sale" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/discountTextView"
+                        style="@style/DiscountText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text='@{"-"+(int)viewModel.placeObs.get().actionDiscount + "%"}'
+                        tools:text="-20%" />
+
+                </LinearLayout>
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/discountTextTextView"
+                    style="@style/PlaceText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:layout_weight="@dimen/fragment_place_right_weight"
+                    android:text='@{viewModel.placeObs.get().action_description}'
+                    tools:text="Многие думают, что Lorem Ipsum - взятый с потолка псевдо-латинский набор слов, но это не совсем так." />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bookingLinearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_24"
+                android:background="@drawable/background_button_booking"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.openReservation()}"
+                android:orientation="horizontal"
+                android:visibility="@{viewModel.placeObs.get().hasBooking ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/discountConstraintLayout">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_8"
+                    app:srcCompat="@drawable/ic_booking_white" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/GreenButtonText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/fragment_place_booking" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/contactsTitleTextView"
+                style="@style/PlaceBoldText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="8dp"
+                android:text="@string/fragment_place_contacts"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bookingLinearLayout" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="@dimen/fragment_place_right_weight"
+                android:paddingEnd="@dimen/_16sdp"
+                android:paddingStart="@dimen/_16sdp"
+                app:layout_constraintTop_toBottomOf="@+id/contactsTitleTextView">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/addressTextView"
+                    style="@style/ContactsText.Label"
+                    android:text="@{viewModel.placeObs.get().address}"
+                    app:layout_constraintBottom_toTopOf="@+id/scheduleTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Днепр, ул. Пушкина 32" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/scheduleTextView"
+                    style="@style/ContactsText.Label"
+                    android:text="@{viewModel.placeObs.get().schedule}"
+                    app:layout_constraintBottom_toTopOf="@+id/phoneNumberTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressTextView"
+                    tools:text="Пн-Вс 10:00 - 23:00" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/phoneNumberTextView"
+                    style="@style/ContactsText.Label"
+                    android:text="@{viewModel.placeObs.get().phone}"
+                    app:layout_constraintBottom_toTopOf="@+id/emailTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scheduleTextView"
+                    tools:text="+380 63 777 0000" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/emailTextView"
+                    style="@style/ContactsText.Label"
+                    android:text="@{viewModel.placeObs.get().email}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView"
+                    tools:text="email@gmail.com" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_address"
+                    style="@style/ContactImage"
+                    app:layout_constraintBottom_toBottomOf="@+id/addressTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/addressTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/addressTextView"
+                    app:srcCompat="@drawable/ic_pin" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/scheduleImageView"
+                    style="@style/ContactImage"
+                    app:layout_constraintBottom_toBottomOf="@+id/scheduleTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/scheduleTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/scheduleTextView"
+                    app:srcCompat="@drawable/ic_calendar" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/phoneNumberImageView"
+                    style="@style/ContactImage"
+                    app:layout_constraintBottom_toBottomOf="@+id/phoneNumberTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/phoneNumberTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/phoneNumberTextView"
+                    app:srcCompat="@drawable/ic_phone" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/emailImageView"
+                    style="@style/ContactImage"
+                    app:layout_constraintBottom_toBottomOf="@+id/emailTextView"
+                    app:layout_constraintEnd_toStartOf="@+id/emailTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/emailTextView"
+                    app:srcCompat="@drawable/ic_message" />
+
+                <View
+                    android:id="@+id/view3"
+                    style="@style/ContactDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:id="@+id/view4"
+                    style="@style/ContactDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/scheduleTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/addressTextView" />
+
+                <View
+                    android:id="@+id/view5"
+                    style="@style/ContactDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/phoneNumberTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/scheduleTextView" />
+
+                <View
+                    style="@style/ContactDivider"
+                    app:layout_constraintBottom_toTopOf="@+id/emailTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phoneNumberTextView" />
+
+                <View
+                    style="@style/ContactDivider"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginBottom="@dimen/_8sdp"/>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <fragment
+                android:id="@+id/map"
+                android:name="com.google.android.gms.maps.SupportMapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fragment_place_map_container_height"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_data" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/menuTitleTextView"
+                style="@style/PlaceBoldText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_24"
+                android:text="@string/fragment_place_menu"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/map" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/menuRecyclerView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                bind:items="@{viewModel.productsObs}"
+                app:layout_constraintTop_toBottomOf="@+id/menuTitleTextView" />
+
+            <FrameLayout
+                android:id="@+id/menuFrameLayout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:background="@drawable/background_button_menu_all"
+                android:onClick="@{() -> viewModel.openMenuFragment()}"
+                android:orientation="horizontal"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingEnd="@dimen/size_16"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:paddingStart="@dimen/size_16"
+                android:paddingTop="@dimen/size_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/menuRecyclerView">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/PlaceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/fragment_place_menu_all" />
+
+            </FrameLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/complainTitleTextView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_16"
+                android:background="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.openComplaintsFragment()}"
+                android:text="@string/fragment_place_complain"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/menuFrameLayout" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:id="@+id/ll_reviews"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/comment_background"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/complainTitleTextView">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/BlackBoldText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:text="@string/fragment_place_review" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_load_more"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
+                android:drawableStart="@drawable/ic_refresh"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.loadMoreReviewClick()}"
+                android:paddingEnd="@dimen/_70sdp"
+                android:paddingStart="@dimen/_70sdp"
+                android:text="@string/fragment_place_load_more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ll_reviews" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fb_add_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_80sdp"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_add_white" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:bind="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.place.adapters.PlaceMenuItemViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.onOpenItem()}">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_menu_image_height"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            bind:loadImage="@{viewModel.item.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/PlaceText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_8"
+            android:text="@{viewModel.item.title}"
+            app:layout_constraintEnd_toStartOf="@+id/cartLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/priceTextView"
+            style="@style/ContactsText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_8"
+            tools:text="500 ₸"
+            android:text="@{viewModel.item.price.toString()+' '+'₸'}"
+            app:layout_constraintEnd_toStartOf="@+id/cartLinearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+        <LinearLayout
+            android:id="@+id/cartLinearLayout"
+            android:layout_width="@dimen/fragment_place_menu_cart_button_size"
+            android:layout_height="@dimen/fragment_place_menu_cart_button_size"
+            android:background="@drawable/background_button_booking"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/ic_cart_white"/>
+
+        </LinearLayout>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

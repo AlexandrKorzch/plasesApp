@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.minifilter.MiniFilterViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_29sdp"
+            android:background="@drawable/background_popup_window_list_or_map"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/hideImageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_action_arrow_for_filter"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/fragment_place_divider_thickness"
+                android:layout_marginTop="8dp"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hideImageView" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/placesTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/mini_filter_establishments"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_restaurant"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.restaurant ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_cafe"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/placesTextView"
+                app:srcCompat="@drawable/ic_restaurant" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/restaurantCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.restaurant ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_restaurant"
+                app:layout_constraintTop_toTopOf="@+id/iv_restaurant"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/restaurantTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_restaurant"
+                app:layout_constraintEnd_toEndOf="@+id/iv_restaurant"
+                app:layout_constraintStart_toStartOf="@+id/iv_restaurant"
+                app:layout_constraintTop_toBottomOf="@+id/iv_restaurant" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_cafe"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.cafe ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_bar"
+                app:layout_constraintStart_toEndOf="@+id/iv_restaurant"
+                app:layout_constraintTop_toBottomOf="@+id/placesTextView"
+                app:srcCompat="@drawable/ic_cafe" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/cafeCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.cafe ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_cafe"
+                app:layout_constraintTop_toTopOf="@+id/iv_cafe"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/cafeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_cafe"
+                app:layout_constraintEnd_toEndOf="@+id/iv_cafe"
+                app:layout_constraintStart_toStartOf="@+id/iv_cafe"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cafe" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_bar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.pabBar ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_coffeeHouse"
+                app:layout_constraintStart_toEndOf="@+id/iv_cafe"
+                app:layout_constraintTop_toBottomOf="@+id/placesTextView"
+                app:srcCompat="@drawable/ic_bar" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/barCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.pabBar ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bar"
+                app:layout_constraintTop_toTopOf="@+id/iv_bar"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/barTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_pab_bar"
+                app:layout_constraintEnd_toEndOf="@+id/iv_bar"
+                app:layout_constraintStart_toStartOf="@+id/iv_bar"
+                app:layout_constraintTop_toBottomOf="@+id/iv_bar" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_coffeeHouse"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.coffeeHouse ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_bar"
+                app:layout_constraintTop_toBottomOf="@+id/placesTextView"
+                app:srcCompat="@drawable/ic_coffee_house" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/coffeeHouseCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.coffeeHouse ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_coffeeHouse"
+                app:layout_constraintTop_toTopOf="@+id/iv_coffeeHouse"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/coffeeHouseTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_coffee_house"
+                app:layout_constraintEnd_toEndOf="@+id/iv_coffeeHouse"
+                app:layout_constraintStart_toStartOf="@+id/iv_coffeeHouse"
+                app:layout_constraintTop_toBottomOf="@+id/iv_coffeeHouse" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_sushi"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.sushiBar ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_steak"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/restaurantTextView"
+                app:srcCompat="@drawable/ic_sushi" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/sushiCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.sushiBar ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_sushi"
+                app:layout_constraintTop_toTopOf="@+id/iv_sushi"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sushiTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_sushi_bar"
+                app:layout_constraintEnd_toEndOf="@+id/iv_sushi"
+                app:layout_constraintStart_toStartOf="@+id/iv_sushi"
+                app:layout_constraintTop_toBottomOf="@+id/iv_sushi" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_steak"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.steakHouse ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_laundgBar"
+                app:layout_constraintStart_toEndOf="@+id/iv_sushi"
+                app:layout_constraintTop_toBottomOf="@+id/restaurantTextView"
+                app:srcCompat="@drawable/ic_steak" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/steakCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.steakHouse ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_steak"
+                app:layout_constraintTop_toTopOf="@+id/iv_steak"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/steakTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_stek_house"
+                app:layout_constraintEnd_toEndOf="@+id/iv_steak"
+                app:layout_constraintStart_toStartOf="@+id/iv_steak"
+                app:layout_constraintTop_toBottomOf="@+id/iv_steak" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_laundgBar"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.laundgBar ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/iv_karaoke"
+                app:layout_constraintStart_toEndOf="@+id/iv_steak"
+                app:layout_constraintTop_toBottomOf="@+id/restaurantTextView"
+                app:srcCompat="@drawable/ic_sofa" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/sofaCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.laundgBar ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_laundgBar"
+                app:layout_constraintTop_toTopOf="@+id/iv_laundgBar"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sofaTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_laundj_bar"
+                app:layout_constraintEnd_toEndOf="@+id/iv_laundgBar"
+                app:layout_constraintStart_toStartOf="@+id/iv_laundgBar"
+                app:layout_constraintTop_toBottomOf="@+id/iv_laundgBar" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_karaoke"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="16dp"
+                android:adjustViewBounds="true"
+                android:background="@{viewModel.karaoke ? @drawable/background_button_circle_mini_filter_green : @drawable/background_button_circle_mini_filter_gray}"
+                android:cropToPadding="true"
+                android:onClick="@{(v) -> viewModel.typeClick(v)}"
+                android:padding="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_laundgBar"
+                app:layout_constraintTop_toBottomOf="@+id/restaurantTextView"
+                app:srcCompat="@drawable/ic_karaoke" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/karaokeCheckedImageView"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:background="@drawable/background_button_circle_mini_filter_green"
+                android:padding="5dp"
+                android:visibility="@{viewModel.karaoke ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="@+id/iv_karaoke"
+                app:layout_constraintTop_toTopOf="@+id/iv_karaoke"
+                app:srcCompat="@drawable/ic_check_for_filter" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/karaokeTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/mini_filter_karaoke"
+                app:layout_constraintEnd_toEndOf="@+id/iv_karaoke"
+                app:layout_constraintStart_toStartOf="@+id/iv_karaoke"
+                app:layout_constraintTop_toBottomOf="@+id/iv_karaoke" />
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/fragment_place_divider_thickness"
+                android:layout_marginTop="16dp"
+                android:background="@color/divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sushiTextView" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dateTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/mini_filter_date"
+                android:textAllCaps="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <FrameLayout
+                android:id="@+id/fl_today"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginBottom="@dimen/_32sdp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="16dp"
+                android:background="@{viewModel.today ? @drawable/background_button_mini_filter_green : @drawable/background_button_mini_filter_gray}"
+                android:onClick="@{(v) -> viewModel.dateClick(v)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/fl_tomorrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateTextView">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/todayTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/mini_filter_today" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_tomorrow"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="@dimen/_4sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:background="@{viewModel.tomorrow ? @drawable/background_button_mini_filter_green : @drawable/background_button_mini_filter_gray}"
+                android:onClick="@{(v) -> viewModel.dateClick(v)}"
+                app:layout_constraintBottom_toBottomOf="@+id/fl_today"
+                app:layout_constraintEnd_toStartOf="@+id/fl_custom_date"
+                app:layout_constraintStart_toEndOf="@+id/fl_today"
+                app:layout_constraintTop_toTopOf="@+id/fl_today">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tomorrowTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/mini_filter_tomorrow" />
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/fl_custom_date"
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:background="@{viewModel.customDate ? @drawable/background_button_mini_filter_green : @drawable/background_button_mini_filter_gray}"
+                android:onClick="@{(v) -> viewModel.dateClick(v)}"
+                app:layout_constraintBottom_toBottomOf="@+id/fl_tomorrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/fl_tomorrow"
+                app:layout_constraintTop_toTopOf="@+id/fl_tomorrow">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/chooseDateTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="4dp"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:gravity="center_vertical"
+                    android:text="@{viewModel.date}" />
+
+            </FrameLayout>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/background_button_circle_white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_confirm"
+                android:layout_width="@dimen/_48sdp"
+                android:layout_height="@dimen/_48sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_5sdp"
+                android:adjustViewBounds="false"
+                android:background="@{viewModel.changed ? @drawable/background_button_circle_green : @drawable/background_button_circle_min_filter_gray}"
+                android:cropToPadding="false"
+                android:padding="@dimen/_16sdp"
+                bind:homeImage="@{viewModel.changed}"
+                tools:background="@drawable/background_button_circle_min_filter_gray"
+                tools:srcCompat="@drawable/ic_home_mini_filter_gray" />
+
+        </FrameLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

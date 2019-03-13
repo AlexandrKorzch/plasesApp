@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.notifications.adapter.NotificationsItemViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.selectItem()}"
+        android:orientation="horizontal">
+
+        <!-- TODO change view model logic -->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iconImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_16"
+            android:customResource="@{viewModel.getImage()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <LinearLayout
+            android:id="@+id/textLinearLayout"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_16"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/arrowImageView"
+            app:layout_constraintStart_toEndOf="@+id/iconImageView"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <!-- TODO remove text -->
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/BlackSmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Вы забронировали столик"/>
+
+            <!-- TODO remove text -->
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/GreenText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Квартира 44"/>
+
+            <!-- TODO remove text -->
+            <android.support.v7.widget.AppCompatTextView
+                style="@style/AddressInCardText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="20.12.2018, 15:00"/>
+
+        </LinearLayout>
+
+        <!-- TODO change view model logic -->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/arrowImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:visibility="@{viewModel.isArrowVisible() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+        <!-- TODO change view model logic -->
+        <FrameLayout
+            android:id="@+id/redCircleFrameLayout"
+            android:layout_width="@dimen/size_8"
+            android:layout_height="@dimen/size_8"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_8"
+            android:background="@drawable/background_menu_places_badge_red"
+            android:visibility="@{viewModel.isNewVisible() ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_reservation_divider_thickness"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

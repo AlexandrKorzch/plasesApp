@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.notification.BookingNotificationViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDarkTransparent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_56sdp"
+            android:layout_marginEnd="@dimen/_16sdp"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_56sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_picture"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_170sdp"
+                android:background="@color/colorWhite"
+                android:paddingTop="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/im_radish_with_cheese" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_title"
+                style="@style/BlackSmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:paddingTop="@dimen/_8sdp"
+                android:text="Бронь столика в Sky Bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_picture" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_time"
+                style="@style/GraySmallText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:gravity="center"
+                android:paddingBottom="@dimen/_24sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="22.12.18 на 18:00"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_on_place"
+                android:clickable="@{!viewModel.isOpened}"
+                android:text="@string/dialog_booking_on_place"
+                android:onClick="@{(v) -> viewModel.onPlaceClick()}"
+                android:textColor="@color/colorGreen"
+                style="@style/BookingNotificationClickTextView"
+                app:layout_constraintBottom_toTopOf="@+id/cl_late"
+                app:layout_constraintTop_toBottomOf="@+id/tv_time" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/cl_late"
+                android:onClick="@{(v) -> viewModel.changeState()}"
+                style="@style/BookingNotificationClickTextView"
+                app:layout_constraintBottom_toTopOf="@+id/tv_decline"
+                app:layout_constraintTop_toBottomOf="@+id/tv_on_place" >
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_late"
+                    style="@style/BookingNotificationClickTextView"
+                    android:layout_width="wrap_content"
+                    android:background="@null"
+                    android:foreground="@null"
+                    android:text="@string/dialog_booking_late"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_arrow"
+                    android:layout_width="@dimen/_10sdp"
+                    android:layout_height="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/tv_late"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_down_booking" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_decline"
+                android:clickable="@{!viewModel.isOpened}"
+                style="@style/BookingNotificationClickTextView"
+                android:text="@string/dialog_booking_decline"
+                android:onClick="@{(v) -> viewModel.declineClick()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cl_late" />
+
+            <View
+                style="@style/DividerHorizontal.DividerHorizontalDark"
+                app:layout_constraintTop_toBottomOf="@+id/cl_late" />
+
+            <View
+                style="@style/DividerHorizontal.DividerHorizontalDark"
+                app:layout_constraintTop_toBottomOf="@+id/tv_on_place" />
+
+            <android.support.constraint.ConstraintLayout
+                android:visibility="@{viewModel.isOpened ? View.VISIBLE : View.GONE}"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="0dp"
+                android:background="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_on_place">
+
+                <View
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:background="@drawable/ic_triangle_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/constraintLayout7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:background="@drawable/background_booking_dialog_late"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="@dimen/_8sdp"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_fifteen_min"
+                        android:text="@string/dialog_booking_15_min"
+                        android:onClick="@{(v) -> viewModel.lateClick(15, v)}"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_thirty_min"
+                        app:layout_constraintTop_toTopOf="parent"
+                        bind:bookingColor="@{viewModel.selectedFifteen}"
+                        style="@style/LateTimePickerTextView" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_thirty_min"
+                        style="@style/LateTimePickerTextView"
+                        bind:bookingColor="@{viewModel.selectedThirty}"
+                        android:text="@string/dialog_booking_30_min"
+                        android:onClick="@{(v) -> viewModel.lateClick(30, v)}"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_forty_five_min"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_fifteen_min" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_forty_five_min"
+                        style="@style/LateTimePickerTextView"
+                        bind:bookingColor="@{viewModel.selectedFortyFive}"
+                        android:text="@string/dialog_booking_45_min"
+                        android:onClick="@{(v) -> viewModel.lateClick(45, v)}"
+                        app:layout_constraintBottom_toTopOf="@+id/tv_forty_one_hour"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_thirty_min" />
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/tv_forty_one_hour"
+                        style="@style/LateTimePickerTextView"
+                        bind:bookingColor="@{viewModel.selectedOneHour}"
+                        android:text="@string/dialog_booking_1_hour"
+                        android:onClick="@{(v) -> viewModel.lateClick(60, v)}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_forty_five_min" />
+
+                    <View
+                        style="@style/DividerHorizontal.DividerHorizontalDark"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_fifteen_min" />
+
+                    <View
+                        style="@style/DividerHorizontal.DividerHorizontalDark"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_thirty_min" />
+
+                    <View
+                        style="@style/DividerHorizontal.DividerHorizontalDark"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_forty_five_min" />
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

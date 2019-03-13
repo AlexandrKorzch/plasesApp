@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#CFCFCF</color>
+    <color name="colorAccent">#2AC279</color>
+
+    <color name="colorSkeleton">#CFCFCF</color>
+    <color name="colorTransparent">#00FFFFFF</color>
+
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorBlack">#1b1b1b</color>
+    <color name="colorGray">#bababa</color>
+    <color name="colorGrayL">#cecece</color>
+    <color name="colorGrayL2">#dddddd</color>
+    <color name="colorDarkGray">#878788</color>
+    <color name="colorGrayLight">#F3F3F3</color>
+    <color name="colorGrayLightLight">#CCF3F3F3</color>
+    <color name="colorGrayBlue">#DADFE2</color>
+    <color name="colorGrayBlueLight">#E8EAED</color>
+    <color name="colorGrayRed">#FAFAFA</color>
+    <color name="colorGreen">#2AC279</color>
+    <color name="colorGreenLight">#CC2AC279</color>
+    <color name="colorRed">#DC4B3E</color>
+    <color name="colorDarkTransparent">#96000000</color>
+
+    <color name="button">#CFCFCF</color>
+    <color name="buttonLight">#CCCFCFCF</color>
+    <color name="grayButton">#EBEBEB</color>
+    <color name="grayButtonLight">#CCEBEBEB</color>
+
+    <color name="divider">#EFEFEF</color>
+
+    <color name="listBackground">#E9E9E9</color>
+    <color name="addressTextInCard">#777777</color>
+
+    <color name="profile_wallet_bt">#d9dee1</color>
+    <color name="profile_booking_bt">#e7e9ec</color>
+    <color name="profile_payment_bt">#eff0f3</color>
+    <color name="profile_profile_bt">#f9f9f9</color>
+
+    <color name="comment_divider_1">#dcdcdc</color>
+    <color name="comment_divider_2">#e0e0e0</color>
+    <color name="comment_background">#f3f3f3</color>
+</resources>

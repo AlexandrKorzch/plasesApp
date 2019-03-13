@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.promotions.adapter.PromotionsItemViewModel" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/itemLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_6"
+        android:background="@color/colorWhite"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.openPromotion()}"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/item_promotions_image_view_height"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/test"
+            bind:loadImageNoGone="@{viewModel.item.image}"/>
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="@dimen/size_0"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/titleTextView"
+                style="@style/PlaceText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_8"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.item.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="День бородача в Sky bar" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textTextView"
+                style="@style/BlackSmallText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_8"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="@{viewModel.item.shortDescription}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                tools:text="Равным образом реализация намеченного плана развития обеспечивает актуальность." />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/addressTextView"
+                style="@style/GraySmallText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_16"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/size_16"
+                android:drawablePadding="@dimen/size_8"
+                android:drawableStart="@drawable/ic_pin_small"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.item.address}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dateTextView"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="ул. Пушкина 32" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/dateTextView"
+                style="@style/GraySmallText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_16"
+                android:layout_marginEnd="@dimen/size_16"
+                android:drawablePadding="@dimen/size_8"
+                android:drawableStart="@drawable/ic_calendar_small"
+                android:ellipsize="end"
+                android:maxLines="1"
+                tools:text="22.12 - 22.01"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                bind:end="@{viewModel.item.startDate}"
+                bind:start="@{viewModel.item.endDate}" />
+
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</layout>

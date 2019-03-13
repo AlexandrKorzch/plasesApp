@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="item"
+            type="net.caffee.places.ui.faq.adapter.FaqItem"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/selectableItemBackground"
+        android:onClick="@{() -> item.changeState()}">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/itemContainerConstraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/titleTextView"
+                style="@style/BlackSmallText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/size_16"
+                tools:text="По полю, слегка попахивая высоким жабо комнате громко тикали?"
+                android:text="@{item.fag.question}"
+                app:layout_constraintEnd_toStartOf="@+id/iconFrameLayout"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <FrameLayout
+                android:id="@+id/iconFrameLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/titleTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/titleTextView">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{item.isOpened() ? View.VISIBLE : View.GONE}"
+                    app:srcCompat="@drawable/ic_arrow_detailed_question"/>
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{item.isOpened() ? View.GONE : View.VISIBLE}"
+                    app:srcCompat="@drawable/ic_arrow_rolled_question"/>
+
+            </FrameLayout>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/textTextView"
+                style="@style/NavigationDrawerGrayText"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
+                tools:text="Панталоны с благодарностью виляя хвостом одном из сочинения: живописца поразила поза. Моряка была распахнута настежь австралии составляет квадратных."
+                android:text="@{item.fag.answer}"
+                android:visibility="@{item.isOpened() ? View.VISIBLE : View.GONE}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+        </android.support.constraint.ConstraintLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_reservation_divider_thickness"
+            android:layout_marginStart="@dimen/size_16"
+            android:background="@color/divider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

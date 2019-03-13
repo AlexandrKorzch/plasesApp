@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.reservation.dialogs.ReservationDialogViewModel"/>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- TODO change icon (remove standard) -->
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/closeImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_8"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.closeDialog()}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_cross"/>
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/mainImageView"
+            android:layout_width="@dimen/dialog_fragment_reservation_image_view_size"
+            android:layout_height="@dimen/dialog_fragment_reservation_image_view_size"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_24"
+            android:adjustViewBounds="false"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_pot"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/BlackText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_24"
+            android:gravity="center_horizontal"
+            android:text="@string/dialog_fragment_reservation_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mainImageView"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/subtitleTextView"
+            style="@style/GrayText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:gravity="center_horizontal"
+            android:text="@string/dialog_fragment_reservation_subtitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/okTextView"
+            style="@style/GreenBoldText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_32"
+            android:background="@drawable/background_button_dialog_ok"
+            android:gravity="center_horizontal"
+            android:onClick="@{() -> viewModel.closeDialog()}"
+            android:padding="@dimen/size_16"
+            android:text="@string/dialog_fragment_reservation_ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitleTextView"/>
+
+    </android.support.constraint.ConstraintLayout>
+
+</layout>

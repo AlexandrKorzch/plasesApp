@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="net.caffee.places.activity.main.MainActivity">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.activity.main.MainViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/size_24">
+
+        <LinearLayout
+            android:id="@+id/firstRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/closeNavigationDrawerFrameLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.pressCloseNavigationDrawerButton()}">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/ic_cross"/>
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="3"
+                android:background="@color/colorGrayLight"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secondRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/photoImageView"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                bind:loadImageNoGone="@{viewModel.image}"
+                tools:src="@drawable/test_marina"
+                android:scaleType="centerCrop"/>
+
+            <FrameLayout
+                android:id="@+id/editFrameLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorGrayBlue"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.pressProfileButton()}">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/NavigationDrawerGraySmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="@dimen/size_8"
+                    android:drawableTop="@drawable/ic_profile"
+                    android:gravity="center"
+                    android:text="@string/navigation_drawer_profile"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/profileFrameLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorGrayBlueLight"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.pressEditProfileButton()}">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/NavigationDrawerGraySmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="@dimen/size_8"
+                    android:drawableTop="@drawable/ic_edit_profile"
+                    android:gravity="center"
+                    android:text="@string/navigation_drawer_edit"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/exitFrameLayout"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@color/colorGrayRed"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{() -> viewModel.pressExitButton()}">
+
+                <android.support.v7.widget.AppCompatTextView
+                    style="@style/NavigationDrawerGraySmallText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:drawablePadding="@dimen/size_8"
+                    android:drawableTop="@drawable/ic_exit"
+                    android:gravity="center"
+                    android:text="@string/navigation_drawer_exit"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/thirdRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/fullNameTextView"
+                style="@style/BlackBigText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/size_2"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.name}"
+                tools:text="Имя Фамилия"/>
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/cityTextView"
+                style="@style/BlackSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@{viewModel.city}"
+                tools:text="Город"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/fourthRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.pressSaleButton()}"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/size_16"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/saleMenuTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:customTypeface='@{viewModel.isSalePressed() ? "bold" : "normal"}'
+                android:drawablePadding="@dimen/size_16"
+                android:drawableStart="@drawable/ic_sale_menu"
+                android:gravity="center"
+                android:text="@string/navigation_drawer_sale"
+                android:textColor="@{viewModel.isSalePressed() ? @color/colorBlack : @color/addressTextInCard}"
+                android:textSize="@dimen/navigation_view_item_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/fifthRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.pressSettingsButton()}"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/size_16"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/settingsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:customTypeface='@{viewModel.isSettingsPressed() ? "bold" : "normal"}'
+                android:drawablePadding="@dimen/size_16"
+                android:drawableStart="@drawable/ic_settings"
+                android:gravity="center"
+                android:text="@string/navigation_drawer_settings"
+                android:textColor="@{viewModel.isSettingsPressed() ? @color/colorBlack : @color/addressTextInCard}"
+                android:textSize="@dimen/navigation_view_item_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/sixthRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.pressSupportButton()}"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/size_16"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/supportTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:customTypeface='@{viewModel.isSupportPressed() ? "bold" : "normal"}'
+                android:drawablePadding="@dimen/size_16"
+                android:drawableStart="@drawable/ic_support"
+                android:gravity="center"
+                android:text="@string/navigation_drawer_support"
+                android:textColor="@{viewModel.isSupportPressed() ? @color/colorBlack : @color/addressTextInCard}"
+                android:textSize="@dimen/navigation_view_item_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/seventhRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.pressFaqButton()}"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/size_16"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/faqTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:customTypeface='@{viewModel.isFaqPressed() ? "bold" : "normal"}'
+                android:drawablePadding="@dimen/size_16"
+                android:drawableStart="@drawable/ic_faq"
+                android:gravity="center"
+                android:text="@string/navigation_drawer_faq"
+                android:textColor="@{viewModel.isFaqPressed() ? @color/colorBlack : @color/addressTextInCard}"
+                android:textSize="@dimen/navigation_view_item_text_size"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:background="@color/divider"/>
+
+        <LinearLayout
+            android:id="@+id/eighthRowLinearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_0"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground"
+            android:onClick="@{() -> viewModel.pressTermsButton()}"
+            android:orientation="horizontal"
+            android:paddingEnd="@dimen/size_16"
+            android:paddingStart="@dimen/size_16">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/termsTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:customTypeface='@{viewModel.isTermsPressed() ? "bold" : "normal"}'
+                android:drawablePadding="@dimen/size_16"
+                android:drawableStart="@drawable/ic_terms"
+                android:gravity="center"
+                android:text="@string/navigation_drawer_terms"
+                android:textColor="@{viewModel.isTermsPressed() ? @color/colorBlack : @color/addressTextInCard}"
+                android:textSize="@dimen/navigation_view_item_text_size"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>

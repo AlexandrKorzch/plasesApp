@@ -1,0 +1,325 @@
+<resources>
+    <string name="app_name">My place</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="title_activity_menu_title">MenuTitleActivity</string>
+    <string name="title_activity_notification">NotificationActivity</string>
+
+
+    <!--main-->
+    <string name="cancel">отмена</string>
+
+    <!-- menu -->
+    <string name="menu_places_fragment_search_hint">Поиск</string>
+    <string name="menu_places_fragment_map">Карта</string>
+    <string name="menu_places_fragment_cart">Корзина</string>
+    <string name="menu_places_fragment_booking">Брони</string>
+    <string name="menu_places_fragment_filter">Фильтр</string>
+    <string name="menu_map_or_list_list">Списком</string>
+    <string name="menu_map_or_list_map">На карте</string>
+    <string name="menu_notifications_fragment_new_notifications">Новые уведомления</string>
+    <string name="menu_places_near_you_fragment_map">Карта</string>
+
+    <!-- navigation drawer -->
+    <string name="navigation_drawer_profile">Profile</string>
+    <string name="navigation_drawer_edit">Edit</string>
+    <string name="navigation_drawer_exit">Exit</string>
+    <string name="navigation_drawer_sale">Акции</string>
+    <string name="navigation_drawer_settings">Настройки</string>
+    <string name="navigation_drawer_support">Поддержка</string>
+    <string name="navigation_drawer_faq">Вопросы и ответы</string>
+    <string name="navigation_drawer_terms">Соглашение</string>
+
+    <!-- bottom navigation menu -->
+    <string name="bottom_navigation_menu_favorite">Избранные</string>
+    <string name="bottom_navigation_menu_notifications">Уведомления</string>
+    <string name="bottom_navigation_menu_places">Места</string>
+    <string name="bottom_navigation_menu_all">Все</string>
+    <string name="bottom_navigation_menu_invoice">Счет</string>
+    <string name="bottom_navigation_menu_delivery">Доставка</string>
+
+    <!-- popup window list or map -->
+    <string name="popup_window_list_or_map_title">Просмотр заведений</string>
+    <string name="popup_window_list_or_map_list_view">Списком</string>
+    <string name="popup_window_list_or_map_map_view">На карте</string>
+
+    <!-- popup window faq -->
+    <string name="popup_window_faq_support_service">Служба поддержки</string>
+
+    <!-- fragment place -->
+    <string name="fragment_place_review">Отзывы</string>
+    <string name="fragment_place_load_more">Загрузить еще</string>
+    <string name="fragment_place_concrete_place">Конкретное заведение</string>
+    <string name="fragment_place_about_place">О ресторане</string>
+    <string name="fragment_place_discount">Условия скидки</string>
+    <string name="fragment_place_booking">Забронировать стол</string>
+    <string name="fragment_place_contacts">Контакты</string>
+    <string name="fragment_place_menu">Меню</string>
+    <string name="fragment_place_menu_all">Меню полностью</string>
+    <string name="fragment_place_gallery">Галерея</string>
+    <string name="fragment_place_complain">Пожаловаться</string>
+
+    <!-- fragment notifications -->
+    <string name="fragment_notifications_title">Уведомления</string>
+
+    <!-- fragment reservation -->
+    <string name="fragment_reservation_title">Бронирование</string>
+    <string name="fragment_reservation_date">Дата, время</string>
+    <string name="fragment_reservation_person_count">Количество персон</string>
+    <string name="fragment_reservation_send_query">Отправить запрос</string>
+
+    <!-- fragment faq -->
+    <string name="fragment_faq_title">Вопросы и ответы</string>
+    <string name="fragment_faq_help_icon">Помощь</string>
+
+    <!-- fragment promotions -->
+    <string name="fragment_promotions_title">Скидки</string>
+
+    <!-- fragment promotion -->
+    <string name="fragment_promotion_title">Скидка</string>
+    <string name="fragment_promotion_button_previous">Пред.</string>
+    <string name="fragment_promotion_button_next">След.</string>
+
+    <!-- fragment settings -->
+    <string name="fragment_settings_title">Настройки</string>
+    <string name="fragment_settings_notifications">Уведомления</string>
+    <string name="fragment_settings_language">Язык</string>
+    <string name="fragment_settings_kazakh">Қазақ тілі</string>
+    <string name="fragment_settings_english">English</string>
+    <string name="fragment_settings_russian">Русский</string>
+    <string name="fragment_settings_kazakh_in_english">Kazakh</string>
+    <string name="fragment_settings_english_in_english">English</string>
+    <string name="fragment_settings_russian_in_english">Russian</string>
+
+    <!-- fragment support -->
+    <string name="fragment_support_title">Поддержка</string>
+    <string name="fragment_support_user_first_name">Имя</string>
+    <string name="fragment_support_user_last_name">Фамилия</string>
+    <string name="fragment_support_user_email">Эл. почта</string>
+    <string name="fragment_support_category">Категория</string>
+    <string name="fragment_support_question">Ваш вопрос</string>
+    <string name="fragment_support_send">Отправить</string>
+    <string name="fragment_support_send_message">Отправить сообщение</string>
+    <string name="fragment_support_user_email_error">Введите корректный адрес электронной почты</string>
+
+    <!-- fragment terms and conditions -->
+    <string name="fragment_terms_and_conditions_title">Пользовательское соглашение</string>
+    <string name="fragment_terms_and_conditions_checkbox">Я согласен (на) с условиями пользовательского соглашения</string>
+
+    <!-- dialog fragment reservation -->
+    <string name="dialog_fragment_reservation_title">Ваш запрос отправлен</string>
+    <string name="dialog_fragment_reservation_subtitle">Мы перезвоним Вам в течении 30 минут для уточнения</string>
+    <string name="dialog_fragment_reservation_ok">OK, СПАСИБО</string>
+    <string name="dialog_fragment_reservation_error_min_people_count">Количество персон должно быть больше 0</string>
+    <string name="dialog_fragment_reservation_error_min_date">Выбранная дата не может быть меньше текущей</string>
+
+    <!-- dialog fragment support -->
+    <string name="dialog_fragment_support_title">Ваш вопрос отправлен</string>
+    <string name="dialog_fragment_support_subtitle">Наша служба поддержки свяжется с Вами в ближайшее время</string>
+
+    <!-- fragment menu -->
+    <string name="fragment_menu_title">Меню</string>
+    <string name="fragment_menu_main_dishes">Основное</string>
+    <string name="fragment_menu_dessert">Дессерты</string>
+    <string name="fragment_menu_beverages">Напитки</string>
+
+    <!-- fragment complaints -->
+    <string name="fragment_complaints_title">Жалоба</string>
+    <string name="fragment_complaints_subtitle">Выберите категорию и напишите комментарий. Мы рассмотрим вашу жалобу</string>
+    <string name="fragment_complaints_category">Категория</string>
+    <string name="fragment_complaints_description">Описание жалобы</string>
+    <string name="fragment_complaints_send">Отправить</string>
+    <string name="fragment_complaints_item_delivery">Доставка</string>
+    <string name="fragment_complaints_item_kitchen">Кухня</string>
+    <string name="fragment_complaints_item_app">Мобильное приложение</string>
+    <string name="fragment_complaints_item_fraud">Мошенничество</string>
+    <string name="fragment_complaints_item_low_quality_services">Некачественные услуги</string>
+    <string name="fragment_complaints_item_incorrect_behavior">Некорректное поведение</string>
+    <string name="fragment_complaints_item_cheating">Обман</string>
+    <string name="fragment_complaints_item_payment_terminals">Терминалы оплаты</string>
+    <string name="fragment_complaints_item_other">Другое</string>
+    <string name="fragment_complaints_description_hint">Не менее 10 символов</string>
+
+    <!-- fragment carts -->
+    <string name="fragment_carts_into_cart">В корзину</string>
+
+    <!-- fragment filter -->
+    <string name="fragment_filter_title">Фильтр</string>
+    <string name="fragment_filter_label_city">Город</string>
+    <string name="fragment_filter_label_place_type">Тип заведения</string>
+    <string name="fragment_filter_label_cuisine">Кухня</string>
+    <string name="fragment_filter_label_reservation">Бронирование</string>
+    <string name="fragment_filter_label_delivery">Доставка</string>
+    <string name="fragment_filter_label_radius">Удалённость</string>
+    <string name="fragment_filter_label_sorting_type">Сортировать по</string>
+    <string name="fragment_filter_menu_ready">Готово</string>
+    <string name="fragment_filter_search">Поиск</string>
+
+    <!--fragment advantages-->
+    <string name="fragment_advantages_title">Преимущества</string>
+
+    <!-- dialog fragment menu item -->
+    <string name="dialog_fragment_menu_item_size">Размер</string>
+    <string name="dialog_fragment_menu_item_price">Стоимость</string>
+    <string name="dialog_fragment_menu_item_add_to_cart">В корзину</string>
+    <string name="dialog_fragment_menu_item_min_amount">1</string>
+    <string name="dialog_fragment_menu_item_minus">-</string>
+    <string name="dialog_fragment_menu_item_plus">+</string>
+
+    <string name="title_activity_place">PlaceActivity</string>
+    <string name="title_activity_common">CommonActivity</string>
+    <string name="title_activity_maps">Map</string>
+
+    <!--advantages-->
+    <string name="advantages_1">1</string>
+    <string name="advantages_2">2</string>
+    <string name="advantages_3">3</string>
+    <string name="advantages_4">4</string>
+    <string name="advantages">преимущества</string>
+    <string name="advantages_skip">пропустить</string>
+    <string name="advantages_next">СЛЕД.</string>
+    <string name="advantages_enter">ВОЙТИ</string>
+
+    <!--spalsh-->
+    <string name="splash_guide">Путеводитель заведений твоего \n города в одном приложении</string>
+
+    <!--sign in-->
+    <string name="fragment_sign_in_title">Авторизация</string>
+    <string name="fragment_sign_in_please_set_phone">Введите свой номер телефона. Мы вышлем\n Вам сообщение с кодом подтверждения</string>
+    <string name="fragment_sign_in_enter_your_phone">Номер телефона</string>
+    <string name="fragment_sign_in_submit">Отправить код</string>
+    <string name="fragment_sign_un_agreement">Я принимаю  <u>пользовательское соглашение</u></string>
+    <string name="fragment_sign_in_skeep">Пропустить</string>
+
+    <!--confirmation-->
+    <string name="fragment_confirmation_code_to_phone">Код верификации мы отправили на номер: \n phone_replace</string>
+    <string name="fragment_confirmation_enter_your_code">введите код</string>
+    <string name="fragment_confirmation_title">Подтверждение</string>
+    <string name="fragment_confirmation_code_label">Код подтверждения</string>
+    <string name="fragment_confirmation_confirm">Подтвердить</string>
+    <string name="fragment_confirmation_send_more">Отправить еще раз</string>
+
+    <!--profile-->
+    <string name="profile_profile">Профиль</string>
+    <string name="profile_add_to_balance">Пополнить баланс</string>
+    <string name="profile_your_balance">Ваш Баланс</string>
+    <string name="profile_payments">Оплаты</string>
+    <string name="profile_bookings">Брони</string>
+    <string name="profile_wallet">Кошелек</string>
+
+    <!--edit profile-->
+    <string name="profile_ok">готово</string>
+    <string name="profile_change_profile">Изменить профиль</string>
+
+    <!--order-->
+    <string name="order_order">Заказ</string>
+    <string name="order_personal_info">личная информация</string>
+    <string name="order_phone">Телефон</string>
+    <string name="order_delivery_">доставка</string>
+    <string name="order_city">Город</string>
+    <string name="order_street">Улица</string>
+    <string name="order_address">Дом / Квартира</string>
+    <string name="order_next">Продолжить</string>
+    <string name="order_delivery">Доставка</string>
+    <string name="order_payment">Оплата</string>
+    <string name="order_edit">Редактировать</string>
+    <string name="order_wallet">Кошелек</string>
+    <string name="order_card">Карта</string>
+    <string name="order_cash">Наличные</string>
+    <string name="order_payment_">оплата</string>
+    <string name="order_add_comment">Добавить комментарий</string>
+    <string name="order_value">стоимость</string>
+    <string name="order_value_of_order">Стоимость заказа:</string>
+    <string name="order_value_of_delivery">Доставки:</string>
+    <string name="order_sum">Итого:</string>
+    <string name="order_place_an_order">Оформить заказ</string>
+    <string name="order_order_is_processed">Заказ оформлен</string>
+    <string name="order_order_processed">Ваш заказ успешно оформлен!</string>
+    <string name="order_comment">Комментарий</string>
+    <string name="order_continue_placing_an_order">Продолжить оформление</string>
+    <string name="order_wrong_data">Не все данные заполнены</string>
+
+    <!--wallet-->
+    <string name="wallet_menu_info">Инфо</string>
+    <string name="wallet_balance">Баланс</string>
+    <string name="wallet_replenishment_history">История пополнений</string>
+    <string name="wallet_add_to_balance">Пополнить баланс</string>
+    <string name="wallet_wallet">Кошелек</string>
+
+    <!--Payments-->
+    <string name="payments_payments">Оплаты</string>
+
+    <!--booking-->
+    <string name="booking_booking">Брони</string>
+    <string name="booking_past">Прошедшие</string>
+    <string name="booking_current">Текущие</string>
+    <string name="booking_hall">Зал</string>
+    <string name="booking_in">в</string>
+    <string name="booking_ad_pref">Забронирован</string>
+
+    <!--mini_filter-->
+    <string name="mini_filter_establishments">Заведения</string>
+    <string name="mini_filter_restaurant">Ресторан</string>
+    <string name="mini_filter_cafe">Кафе</string>
+    <string name="mini_filter_pab_bar">Паб/Бар</string>
+    <string name="mini_filter_coffee_house">Кофейня</string>
+    <string name="mini_filter_sushi_bar">Сушибар</string>
+    <string name="mini_filter_stek_house">Стейкхаус</string>
+    <string name="mini_filter_laundj_bar">Лаунджбар</string>
+    <string name="mini_filter_karaoke">Караоке</string>
+    <string name="mini_filter_date">Дата</string>
+    <string name="mini_filter_today">Сегодня</string>
+    <string name="mini_filter_tomorrow">Завтра</string>
+    <string name="mini_filter_chose_date">Выбрать</string>
+
+    <!--info-->
+    <string name="fragment_info_title">Информация</string>
+
+    <!--bill-->
+    <string name="invoice_price_of_order">Стоимость заказа:</string>
+    <string name="invoice_price_of_delivery">Доставки:</string>
+    <string name="invoice_sum">Итого:</string>
+    <string name="invoice_pay_from_app">Оплатить в приложении 450 ₸</string><!--expect 450 T-->
+    <string name="invoice_physical_payment">Физическая оплата 500 ₸</string><!--expect 500 T-->
+    <string name="invoice_physical_payment_">Физическая оплата</string><!--expect 500 T-->
+    <string name="invoice_order_got">Заказ доставлен</string>
+    <string name="invoice_get_bill">Заказать счет</string>
+
+    <!--booking dialog-->
+    <string name="dialog_booking_on_place">НА МЕСТЕ</string>
+    <string name="dialog_booking_late">ОПАЗДЫВАЮ</string>
+    <string name="dialog_booking_decline">ОТМЕНИТЬ БРОНЬ</string>
+    <string name="dialog_booking_15_min">15 мин</string>
+    <string name="dialog_booking_30_min">30 мин</string>
+    <string name="dialog_booking_45_min">45 мин</string>
+    <string name="dialog_booking_1_hour">1 час</string>
+
+    <!--place title-->
+    <string name="place_all">Все</string>
+    <string name="place_favorite">Избранные</string>
+    <string name="place_delivery">Доставка</string>
+    <string name="place_near_you">Рядом с Вами</string>
+    <string name="main_notification">Уведомления</string>
+    <string name="main_invoice">Счет</string>
+
+    <!--review-->
+    <string name="review_add_review">Добавить отзыв</string>
+    <string name="review_new_comment">Сообщение</string>
+    <string name="dialog_fragment_review_title">Ваш комментарий отправлен</string>
+    <string name="dialog_fragment_review_text">Спасибо за оставленный комментарий</string>
+
+    <!--filter-->
+    <string name="filter_word">Поиск по слову</string>
+    <string name="actions_conditions">Условия акции</string>
+
+    <!--carts-->
+    <string name="buskets">Корзины</string>
+    <string name="count">единицы</string>
+    <string name="total">Итого:</string>
+    <string name="busket">Корзина</string>
+    <string name="items">ед.</string>
+    <string name="create_order">Оформить заказ:</string>
+
+
+
+</resources>

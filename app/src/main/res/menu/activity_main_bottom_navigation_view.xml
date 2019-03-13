@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/favoriteItem"
+        android:icon="@drawable/menu_favorite"
+        android:title="@string/bottom_navigation_menu_favorite"/>
+    <item
+        android:id="@+id/notificationsItem"
+        android:icon="@drawable/menu_notifications"
+        android:title="@string/bottom_navigation_menu_notifications"/>
+    <item
+        android:id="@+id/placesItem"
+        android:icon="@drawable/menu_places"
+        android:title="@string/bottom_navigation_menu_places"/>
+    <item
+        android:id="@+id/invoiceItem"
+        android:icon="@drawable/menu_invoice"
+        android:title="@string/bottom_navigation_menu_invoice"/>
+    <item
+        android:id="@+id/deliveryItem"
+        android:icon="@drawable/menu_delivery"
+        android:title="@string/bottom_navigation_menu_delivery"/>
+</menu>

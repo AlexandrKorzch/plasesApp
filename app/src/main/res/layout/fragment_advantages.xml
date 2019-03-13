@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.advantages.AdvantagesViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGrayLight">
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/advant_viewpager_margin_top_bottom"
+            android:layout_marginTop="@dimen/advant_viewpager_margin_top_bottom" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView2"
+            style="@style/PlaceBoldBigText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:text="@string/app_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/textView"
+            style="@style/BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_8"
+            android:onClick="@{()-> viewModel.skip()}"
+            android:text="@string/advantages_skip"
+            app:layout_constraintBaseline_toBaselineOf="@+id/appCompatTextView2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/advant_switcher_height"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_first"
+                style="@style/AdvantagesSwitcherBt"
+                android:background="@drawable/background_button_circle_skeleton"
+                android:text="@string/advantages_1"
+                app:layout_constraintEnd_toStartOf="@+id/tv_second"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_second"
+                style="@style/AdvantagesSwitcherBt"
+                android:text="@string/advantages_2"
+                app:layout_constraintEnd_toStartOf="@+id/tv_third"
+                app:layout_constraintStart_toEndOf="@+id/tv_first" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_third"
+                style="@style/AdvantagesSwitcherBt"
+                android:text="@string/advantages_3"
+                app:layout_constraintEnd_toStartOf="@+id/tv_fourth"
+                app:layout_constraintStart_toEndOf="@+id/tv_second" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_fourth"
+                style="@style/AdvantagesSwitcherBt"
+                android:text="@string/advantages_4"
+                app:layout_constraintEnd_toStartOf="@+id/tv_next"
+                app:layout_constraintStart_toEndOf="@+id/tv_third" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_next"
+                android:layout_width="@dimen/advant_bt_width"
+                android:layout_height="match_parent"
+                android:background="@color/colorBlack"
+                android:gravity="center"
+                android:text="@string/advantages_next"
+                android:textColor="@color/colorWhite"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

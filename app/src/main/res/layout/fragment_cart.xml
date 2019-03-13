@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.cart.CartViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/appCompatImageView3"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_cart_item_card_image_view_height"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:loadImageNoGone="@{viewModel.placeImage}" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/placeTitleTextView"
+            style="@style/BlackVerySmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:text="@{viewModel.placeName}"
+            app:layout_constraintEnd_toStartOf="@+id/totalTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView3"
+            tools:text="Стейкхаус - Ziyafet" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/totalTextView"
+            style="@style/AddressInCardText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_16"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatImageView3"
+            bind:totalPriceBasket="@{viewModel.totalPriceObs}"
+            tools:text="Итого: 640 ₸" />
+
+        <View
+            android:id="@+id/divider1"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/fragment_place_divider_thickness"
+            android:layout_marginTop="@dimen/size_16"
+            android:background="@color/divider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/placeTitleTextView" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            style="@style/PlacesCardView"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/orderTextView"
+                style="@style/WhiteSmallText"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:layout_gravity="center"
+                android:background="@drawable/background_button_menu_green"
+                android:gravity="center"
+                android:onClick="@{() -> viewModel.orderClick()}"
+                bind:createOrder="@{viewModel.totalPriceObs}"
+                tools:text="Оформить заказ: 640 ₸" />
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="@dimen/size_0"
+            app:layout_constraintBottom_toTopOf="@+id/cardView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider1"
+            app:layout_constraintVertical_bias="0.0"
+            bind:items="@{viewModel.items}" />
+    </android.support.constraint.ConstraintLayout>
+</layout>

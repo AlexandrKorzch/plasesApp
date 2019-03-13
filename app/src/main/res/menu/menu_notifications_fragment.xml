@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/newNotifications"
+        android:title="@string/menu_notifications_fragment_new_notifications"
+        app:actionLayout="@layout/menu_notifications_new_notifications"
+        app:showAsAction="always"/>
+</menu>

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.order.OrderThirdStepViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGrayLight">
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_first_block"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toTopOf="@+id/cl_second_block"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="3.0">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/picture"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/appCompatTextView"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/im_radish_with_cheese" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
+                style="@style/OrderLabelBlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:layout_marginStart="@dimen/size_0"
+                android:text="@string/order_order_processed"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/picture" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_second_block"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:background="@color/colorWhite"
+            android:paddingBottom="@dimen/_8sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cl_first_block"
+            app:layout_constraintVertical_weight="6.8">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/personal_info_label"
+                style="@style/OrderLabelGraySmallText"
+                android:text="@string/order_personal_info"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_name_edited"
+                style="@style/OrderLabelBlackText"
+                android:layout_marginTop="@dimen/size_2"
+                android:text="Марина Будник"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/personal_info_label"
+                tools:text="Марина Будник" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_phone_edited"
+                style="@style/OrderLabelBlackText"
+                android:layout_marginTop="@dimen/size_2"
+                android:text="8-10-7-7172-12345"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_name_edited"
+                tools:text="8-10-7-7172-12345" />
+
+            <View
+                android:id="@+id/divider1"
+                style="@style/Divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_phone_edited" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/delivery_info_label"
+                style="@style/OrderLabelGraySmallText"
+                android:layout_marginTop="8dp"
+                android:text="@string/order_delivery_"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider1" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_address"
+                style="@style/OrderLabelBlackText"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="Астана, Титова 12, кв. 60"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/delivery_info_label"
+                tools:text="Астана, Титова 12, кв. 60 " />
+
+            <View
+                android:id="@+id/divider2"
+                style="@style/Divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_address" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/payment_info_label"
+                style="@style/OrderLabelGraySmallText"
+                android:layout_marginTop="@dimen/_4sdp"
+                android:text="@string/order_payment_"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/iv_cash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_16sdp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/payment_info_label"
+                app:srcCompat="@drawable/ic_cash_for_order_green"
+                tools:layout_editor_absoluteY="181dp" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_payment_type"
+                style="@style/OrderLabelBlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_cash"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_cash"
+                app:layout_constraintStart_toEndOf="@+id/iv_cash"
+                app:layout_constraintTop_toBottomOf="@+id/payment_info_label" />
+
+            <View
+                android:id="@+id/divider3"
+                style="@style/Divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_cash" />
+
+            <TextView
+                android:id="@+id/sp_comment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_36sdp"
+                android:drawableRight="@drawable/ic_arrow_rolled_question"
+                android:gravity="center|start"
+                android:paddingEnd="@dimen/_16sdp"
+                android:paddingStart="@dimen/_16sdp"
+                android:spinnerMode="dialog"
+                android:text="Комментарий"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+            <View
+                android:id="@+id/divider4"
+                style="@style/Divider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sp_comment" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/cost_of_order"
+                style="@style/OrderLabelGrayText"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/order_value_of_order"
+                app:layout_constraintBottom_toTopOf="@+id/delivery"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/delivery"
+                style="@style/OrderLabelGrayText"
+                android:text="@string/order_value_of_delivery"
+                app:layout_constraintBottom_toTopOf="@+id/sum"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cost_of_order" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sum"
+                style="@style/OrderLabelGrayText"
+                android:layout_marginBottom="@dimen/_8sdp"
+                android:text="@string/order_sum"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/delivery" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_cost_of_order"
+                style="@style/OrderCostBlackText"
+                android:text="300 ₸"
+                app:layout_constraintBottom_toBottomOf="@+id/cost_of_order"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="300 ₸" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_delivery"
+                style="@style/OrderCostBlackText"
+                android:text="40 ₸"
+                app:layout_constraintBottom_toBottomOf="@+id/delivery"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="40 ₸" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_sum"
+                style="@style/OrderCostBlackText"
+                android:text="340 ₸"
+                app:layout_constraintBottom_toBottomOf="@+id/sum"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="340 ₸" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

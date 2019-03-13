@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View"/>
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.carts.adapter.CartsItemViewModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/fragment_carts_item_card_height"
+        android:layout_marginBottom="@dimen/size_6"
+        android:background="@color/colorWhite"
+        android:foreground="?attr/selectableItemBackground"
+        android:onClick="@{() -> viewModel.onOpenItem()}"
+        android:orientation="horizontal">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/fragment_carts_item_image_width"
+            android:layout_height="@dimen/size_0"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:adjustViewBounds="true"
+            android:cropToPadding="true"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/test"
+            bind:loadImageNoGone="@{viewModel.item.placeImage}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/titleTextView"
+            style="@style/BlackText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:layout_marginTop="@dimen/size_16"
+            android:ellipsize="end"
+            android:maxLines="2"
+            tools:text="Add place name"
+            android:text="@{viewModel.item.placeName}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/countTextView"
+            style="@style/AddressInCardText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/size_16"
+            android:layout_marginStart="@dimen/size_16"
+            android:maxLines="1"
+            tools:text="(3 единицы)"
+            bind:items_in_basket="@{viewModel.item.goods.size()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/titleTextView"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/totalTextView"
+            style="@style/BlackSmallText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_8"
+            android:layout_marginStart="@dimen/size_16"
+            android:maxLines="1"
+            tools:text="Итого: 3000 ₸"
+            bind:totalPrice="@{viewModel.item.goods}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/intoCartTextView"
+            app:layout_constraintStart_toEndOf="@+id/imageView"/>
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/intoCartTextView"
+            style="@style/GreenText"
+            android:layout_width="@dimen/size_0"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/size_16"
+            android:layout_marginEnd="@dimen/size_16"
+            android:drawableEnd="@drawable/ic_arrow_right_green"
+            android:drawablePadding="@dimen/size_8"
+            android:maxLines="1"
+            android:text="@string/fragment_carts_into_cart"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

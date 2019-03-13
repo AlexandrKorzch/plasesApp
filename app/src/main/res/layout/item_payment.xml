@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_marginTop="@dimen/_1sdp"
+        android:layout_width="match_parent"
+        android:background="@color/colorWhite"
+        android:paddingStart="@dimen/_16sdp"
+        android:paddingEnd="@dimen/_16sdp"
+        android:paddingTop="@dimen/_12sdp"
+        android:paddingBottom="@dimen/_12sdp"
+        android:layout_height="@dimen/_65sdp">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="@dimen/_32sdp"
+            android:layout_height="@dimen/_32sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_karaoke" />
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="The Dairy Goog mother"
+            android:layout_marginStart="@dimen/_16sdp"
+            app:layout_constraintStart_toEndOf="@+id/iv_picture"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView4"
+            style="@style/GraySmallText"
+            android:layout_marginStart="@dimen/_16sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22.12.2017 , 6.00 pm"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_picture" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView3"
+            style="@style/BlackSmallText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1234 2345"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/tv_sum"
+            style="@style/GreenText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="1559 ₸"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>

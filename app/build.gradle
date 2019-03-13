@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply plugin: 'realm-android'
+
+apply plugin: 'com.google.gms.google-services'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "net.caffee.places"
+        minSdkVersion 19
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    // android support
+    implementation "com.android.support:appcompat-v7:$android_support_version"
+    implementation "com.android.support:design:$android_support_version"
+    implementation "com.android.support:recyclerview-v7:$android_support_version"
+    implementation "com.android.support:cardview-v7:$android_support_version"
+    implementation "com.android.support.constraint:constraint-layout:$android_support_constraint_layout_version"
+
+    // android architecture components
+    implementation "android.arch.lifecycle:extensions:$android_architecture_version"
+    kapt "android.arch.lifecycle:compiler:$android_architecture_version"
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+
+    // data binding
+    annotationProcessor "com.android.databinding:compiler:$android_data_binding_version"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+
+    // glide
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+
+    // google
+    implementation "com.google.android.gms:play-services-maps:$play_services"
+    implementation 'com.google.firebase:firebase-messaging:17.4.0'
+
+    //pick image
+    implementation 'com.github.Mariovc:ImagePicker:1.2.0'
+
+    //permission
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+
+    //rx
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxkotlin:0.55.0'
+
+    //multidex
+    implementation 'com.android.support:multidex:1.0.3'
+
+    //sizes
+    implementation 'com.intuit.sdp:sdp-android:1.0.4'
+
+    //custom seekbar
+    implementation 'com.github.warkiz.widget:indicatorseekbar:1.2.9'
+
+    //progress dialog
+    implementation 'com.github.d-max:spots-dialog:0.7@aar'
+
+    //viewpager indicator
+    implementation 'com.romandanylyk:pageindicatorview:1.0.1'
+
+}
+
+

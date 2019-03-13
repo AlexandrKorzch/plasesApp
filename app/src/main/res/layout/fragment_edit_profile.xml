@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.profile.EditProfileFragmentViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGrayL2">
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/iv_portret"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/size_8"
+            android:scaleType="centerCrop"
+            android:src="@drawable/test_marina"
+            bind:loadImageNoGone="@{viewModel.imageObs}"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.7" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_16"
+            android:elevation="@dimen/size_4"
+            android:onClick="@{() -> viewModel.changePhotoClick()}"
+            app:layout_constraintBottom_toBottomOf="@+id/iv_portret"
+            app:layout_constraintEnd_toEndOf="@+id/iv_portret"
+            app:srcCompat="@drawable/ic_add_white" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:background="@color/colorGrayLight"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_portret"
+            app:layout_constraintVertical_weight="0.3">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/userFirstNameContainer"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="0dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toTopOf="@+id/userLastNameContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/userFirstNameLabelTextView"
+                    style="@style/ReservationLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:text="@string/fragment_support_user_first_name"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/userFirstNameEditText"
+                    style="@style/ReservationText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/size_0"
+                    android:background="@color/colorTransparent"
+                    android:gravity="end|center_vertical"
+                    android:inputType="textCapWords"
+                    android:maxLength="25"
+                    android:paddingEnd="@dimen/size_16"
+                    android:text="@={viewModel.userFirstName}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <View
+                android:id="@+id/divider1"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/size_16"
+                android:background="@color/colorGrayL2"
+                app:layout_constraintBottom_toTopOf="@+id/userLastNameContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userFirstNameContainer" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/userLastNameContainer"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="0dp"
+                android:foreground="?attr/selectableItemBackground"
+                app:layout_constraintBottom_toTopOf="@+id/userCityContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userFirstNameContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/userLastNameLabelTextView"
+                    style="@style/ReservationLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:text="@string/fragment_support_user_last_name"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatEditText
+                    android:id="@+id/userLastNameEditText"
+                    style="@style/ReservationText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/size_0"
+                    android:background="@color/colorTransparent"
+                    android:gravity="end|center_vertical"
+                    android:inputType="textCapWords"
+                    android:maxLength="25"
+                    android:paddingEnd="@dimen/size_16"
+                    android:text="@={viewModel.userLastName}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </android.support.constraint.ConstraintLayout>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="@dimen/_1sdp"
+                android:layout_marginStart="@dimen/size_16"
+                android:background="@color/colorGrayL2"
+                app:layout_constraintBottom_toTopOf="@+id/userCityContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userLastNameContainer" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/userCityContainer"
+                android:layout_width="@dimen/size_0"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userLastNameContainer">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/userCityLabelTextView"
+                    style="@style/ReservationLabelText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:text="Город"
+                    android:textSize="@dimen/_14sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/userCityEditText"
+                    style="@style/ReservationText"
+                    android:layout_width="@dimen/size_0"
+                    android:layout_height="@dimen/size_0"
+                    android:layout_marginEnd="@dimen/size_16"
+                    android:background="@color/colorTransparent"
+                    android:gravity="end|center_vertical"
+                    android:inputType="textCapWords"
+                    android:maxLength="25"
+                    android:paddingEnd="@dimen/size_16"
+                    android:text="@={viewModel.userCity}"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()-> viewModel.userCityClick()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/iv_city"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/iv_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/size_16"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:onClick="@{()-> viewModel.userCityClick()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_arrow_right_dark_gray" />
+
+            </android.support.constraint.ConstraintLayout>
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.login.SignInFragmentViewModel" />
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorGrayLight">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView6"
+            style="@style/BlackBoldText"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:text="@string/fragment_sign_in_title"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintBottom_toTopOf="@+id/appCompatTextView7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_weight="0.1" />
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/appCompatTextView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_24sdp"
+            android:gravity="center"
+            android:paddingBottom="@dimen/_32sdp"
+            android:paddingEnd="@dimen/_16sdp"
+            android:paddingStart="@dimen/_16sdp"
+            android:text="@string/fragment_sign_in_please_set_phone"
+            android:textColor="@color/colorDarkGray"
+            android:textSize="@dimen/_12sdp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_bottom_frame"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView6" />
+
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/cl_bottom_frame"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@color/colorWhite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appCompatTextView7"
+            app:layout_constraintVertical_weight="1.3">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_phone_label"
+                style="@style/BlackText"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_56"
+                android:layout_marginEnd="@dimen/_16sdp"
+                android:gravity="center"
+                android:paddingStart="@dimen/_16sdp"
+                android:text="@string/fragment_sign_in_enter_your_phone"
+                app:layout_constraintEnd_toStartOf="@+id/et_phone"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_phone"
+                style="@style/BlackText"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/size_56"
+                android:background="@color/colorTransparent"
+                android:focusable="true"
+                android:gravity="end|center_vertical"
+                android:inputType="phone"
+                android:maxLength="14"
+                android:nextFocusDown="@+id/cb_agreement"
+                android:onTextChanged="@{viewModel.onTextChanged}"
+                android:paddingEnd="@dimen/_16sdp"
+                android:paddingStart="@dimen/_16sdp"
+                android:textCursorDrawable="@null"
+                android:textColor="@color/colorDarkGray"
+                android:textSize="@dimen/_16sdp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/tv_phone_label" />
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/_16sdp"
+                android:background="@color/colorGray"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/size_16"
+                android:layout_marginStart="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_32"
+                android:background="@{viewModel.backGround() ? @drawable/background_button_menu_green : @drawable/background_button_menu_dark_gray}"
+                android:clickable="@{viewModel.backGround() ? true : false}"
+                android:foreground="?attr/selectableItemBackground"
+                android:onClick="@{()-> viewModel.submitClick()}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_phone"
+                tools:background="@drawable/background_button_menu_dark_gray">
+
+                <android.support.v7.widget.AppCompatTextView
+                    android:id="@+id/tv_submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/fragment_sign_in_submit"
+                    android:textColor="@{viewModel.backGround() ? @color/colorWhite : @color/colorGrayLight}"
+                    android:textSize="@dimen/_15sdp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:textColor="@color/colorGrayLight" />
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/_16sdp"
+                    android:visibility="@{viewModel.backGround() ? View.VISIBLE : View.GONE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_submit"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_send"
+                    tools:srcCompat="@drawable/ic_send" />
+            </android.support.constraint.ConstraintLayout>
+
+            <CheckBox
+                android:id="@+id/cb_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:clickable="@{viewModel.checkIsClickable}"
+                android:checked="@={viewModel.checked()}"
+                android:onCheckedChanged="@{(switch, checked) -> viewModel.onCheck(checked)}"
+                android:textColor="@color/colorDarkGray"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout4" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/tv_agreement"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:layout_marginStart="@dimen/_4sdp"
+                android:text="@string/fragment_sign_un_agreement"
+                android:textSize="@dimen/_12sdp"
+                app:layout_constraintBottom_toBottomOf="@+id/cb_agreement"
+                app:layout_constraintStart_toEndOf="@+id/cb_agreement"
+                app:layout_constraintTop_toTopOf="@+id/cb_agreement" />
+
+        </android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

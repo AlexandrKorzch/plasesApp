@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="net.caffee.places.ui.filter.FilterViewModel"/>
+    </data>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/listBackground">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/background_button_menu_white"
+                android:hint="@string/filter_word"
+                android:padding="@dimen/_8sdp"
+                android:text="@={viewModel.keyWord}"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cityConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.chooseCityClick()}">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/cityLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_city"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <!-- TODO remove hard text -->
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/cityTextView"
+                        style="@style/NavigationDrawerGrayText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:gravity="end"
+                        android:singleLine="true"
+                        android:text="@={viewModel.city}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/cityArrowImageView"
+                        app:layout_constraintStart_toEndOf="@+id/cityLabelTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Астана"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/cityArrowImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        app:layout_constraintBottom_toBottomOf="@+id/cityTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cityTextView"
+                        app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fragment_place_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/placeTypeConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.chooseRestaurantClick()}">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/placeTypeLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_place_type"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/placeTypeTextView"
+                        style="@style/NavigationDrawerGrayText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginStart="8dp"
+                        android:gravity="end"
+                        android:singleLine="true"
+                        android:text="@={viewModel.restaurant}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/placeTypeArrowImageView"
+                        app:layout_constraintStart_toEndOf="@+id/placeTypeLabelTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Ресторан"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/placeTypeArrowImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        app:layout_constraintBottom_toBottomOf="@+id/placeTypeTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/placeTypeTextView"
+                        app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fragment_place_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/cuisineConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.chooseKitchenClick()}">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/cuisineLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_cuisine"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/cuisineTextView"
+                        style="@style/NavigationDrawerGrayText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:gravity="end"
+                        android:singleLine="true"
+                        android:text="@={viewModel.kitchen}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/cuisineArrowImageView"
+                        app:layout_constraintStart_toEndOf="@+id/cuisineLabelTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Итальянская"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/cuisineArrowImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        app:layout_constraintBottom_toBottomOf="@+id/cuisineTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cuisineTextView"
+                        app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/reservationConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/reservationLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_reservation"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/reservationSwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:checked="@={viewModel.bookingObs}"
+                        app:layout_constraintBottom_toBottomOf="@+id/reservationLabelTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/reservationLabelTextView"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fragment_place_divider_thickness"
+                    android:layout_marginStart="@dimen/size_16"
+                    android:background="@color/divider"/>
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/deliveryConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/deliveryLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_delivery"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <android.support.v7.widget.SwitchCompat
+                        android:id="@+id/deliverySwitch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:checked="@={viewModel.deliveryObs}"
+                        app:layout_constraintBottom_toBottomOf="@+id/deliveryLabelTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/deliveryLabelTextView"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical"
+                android:paddingBottom="16dp">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/radiusConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/radiusLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_radius"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <!-- TODO remove hard text -->
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/radiusTextView"
+                        style="@style/NavigationDrawerGrayText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@{viewModel.distance+' '+'M'}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </android.support.constraint.ConstraintLayout>
+
+                <com.warkiz.widget.IndicatorSeekBar
+                    android:id="@+id/indicatorSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_150sdp"
+                    android:paddingTop="@dimen/_16sdp"
+                    app:isb_clear_default_padding="false"
+                    app:isb_indicator_custom_layout="@layout/isb_custom_layout"
+                    app:isb_indicator_stay="false"
+                    app:isb_indicator_type="custom"
+                    app:isb_max="3000"
+                    app:isb_seek_bar_type="discrete_ticks_texts"
+                    app:isb_text_color="@color/colorGray"
+                    app:isb_text_size="@dimen/_11sdp"
+                    app:isb_thumb_color="@color/colorGreen"
+                    app:isb_thumb_width="@dimen/_6sdp"
+                    app:isb_tick_drawable="@drawable/isb_tick_progress"
+                    app:isb_tick_num="5"
+                    app:isb_track_background_bar_color="@color/colorGray"
+                    app:isb_track_background_bar_size="@dimen/_1sdp"
+                    app:isb_track_progress_bar_color="@color/colorGreen"
+                    app:isb_track_progress_bar_size="@dimen/_6sdp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorWhite"
+                android:orientation="vertical">
+
+                <android.support.constraint.ConstraintLayout
+                    android:id="@+id/sortingTypeConstraintLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:onClick="@{() -> viewModel.chooseSortStyleClick()}">
+
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/sortingTypeLabelTextView"
+                        style="@style/BlackSmallText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginStart="@dimen/size_16"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:text="@string/fragment_filter_label_sorting_type"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <!-- TODO remove hard text -->
+                    <android.support.v7.widget.AppCompatTextView
+                        android:id="@+id/sortingTypeTextView"
+                        style="@style/NavigationDrawerGrayText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/size_16"
+                        android:layout_marginEnd="@dimen/size_16"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="@dimen/size_16"
+                        android:gravity="end"
+                        android:singleLine="true"
+                        android:text="@{viewModel.sortType}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/sortingTypeArrowImageView"
+                        app:layout_constraintStart_toEndOf="@+id/sortingTypeLabelTextView"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="Рейтингу"/>
+
+                    <android.support.v7.widget.AppCompatImageView
+                        android:id="@+id/sortingTypeArrowImageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/size_16"
+                        app:layout_constraintBottom_toBottomOf="@+id/sortingTypeTextView"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/sortingTypeTextView"
+                        app:srcCompat="@drawable/ic_arrow_right_gray"/>
+
+                </android.support.constraint.ConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</layout>
